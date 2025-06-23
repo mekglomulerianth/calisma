@@ -140,9 +140,9 @@ html.dark-theme {
 
 #modal {
     position: fixed;
-    top: 50%;
+    top: 15px;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, 0);
     width: 90%;
     max-width: 500px;
     background-color: var(--modal-bg);
@@ -153,6 +153,7 @@ html.dark-theme {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    max-height: calc(100% - 30px);
 }
 
 #modal-backdrop.hidden,
@@ -162,7 +163,12 @@ html.dark-theme {
 }
 
 #modal:not(.hidden) {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, 0) scale(1);
+}
+
+#modal-content {
+    overflow-y: auto;
+    flex-shrink: 1;
 }
 
 .modal-header {
@@ -353,13 +359,13 @@ input:-webkit-autofill:active {
 }
 
 #content-grid {
-    padding-top: 80px; /* Butonların altında kalmasın */
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 75px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-bottom: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 15px;
     align-items: start; /* Öğelerin dikeyde uzamasını engelle */
 }
 
@@ -460,6 +466,21 @@ input:-webkit-autofill:active {
         padding-left: 15px;
         padding-right: 15px;
         gap: 15px;
+    }
+
+    #modal {
+        top: 15px;
+        transform: translate(-50%, 0);
+        max-height: calc(100% - 30px);
+    }
+
+    #modal:not(.hidden) {
+       transform: translate(-50%, 0) scale(1);
+    }
+    
+    #modal-content {
+        overflow-y: auto;
+        flex-shrink: 1;
     }
 
     .modal-header,
