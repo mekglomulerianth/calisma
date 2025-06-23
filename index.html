@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Sayfası</title>
+    <script>
+        // Flaşlamayı önlemek için temayı anında uygula
+        (function() {
+            const storedTheme = localStorage.getItem('theme');
+            const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (storedTheme === 'dark' || (!storedTheme && userPrefersDark)) {
+                document.documentElement.classList.add('dark-theme');
+            } else {
+                document.documentElement.classList.add('light-theme');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="content-grid"></main>
+
+    <button id="theme-switcher" class="theme-button">
+        <span></span>
+    </button>
+    <button id="add-button" class="fab">+</button>
+
+    <div id="popup-menu" class="popup-menu hidden">
+        <button class="popup-option">Not Ekle</button>
+        <button class="popup-option">Çalışma Ekle</button>
+        <button class="popup-option">Görev Ekle</button>
+    </div>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="modal" class="modal hidden">
+        <div class="modal-header">
+            <h2 id="modal-title"></h2>
+            <button id="modal-close-button" class="close-button">&times;</button>
+        </div>
+        <div id="modal-content" class="modal-content">
+            <!-- Dinamik içerik JavaScript tarafından buraya eklenecek -->
+        </div>
+        <div class="modal-footer">
+            <button id="modal-save-button" class="modal-button primary">Kaydet</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
